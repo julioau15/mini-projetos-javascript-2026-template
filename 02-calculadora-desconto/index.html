@@ -20,10 +20,10 @@
       <p class="descricao">Informe o preço e o percentual de desconto.</p>
 
       <label>Preço Original (R$)</label>
-      <input type="number" placeholder="Ex: 200" id="input-preco-original"/>
+      <input type="number" placeholder="Ex: 200" id="input-preco-original" min="0"/>
 
       <label>Desconto (%)</label>
-      <input type="number" placeholder="Ex: 15" id="input-desconto"/>
+      <input type="number" placeholder="Ex: 15" id="input-desconto" min="0" max="100"/>
 
       <button onclick="calcularDesconto()">Calcular</button>
 

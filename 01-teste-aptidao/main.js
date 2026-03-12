@@ -2,19 +2,19 @@
 
 // verifica se esta apto ou não
 const testarAptidao = () => {
-    let tempo = document.getElementById('input-tempo').value
+    let tempo = document.getElementById('input-tempo')
     let container = document.getElementById('resultado')
     let resultado
     let cor
     
 
     // validação
-    if(!isvalid(tempo)){
+    if(!isValid(tempo.value) || !isLimit(0,100,tempo.value)){
         alert('ERRO! Por favor, digite um valor válido.')
         return
     }else{
         // define resultado e cor
-        if(Number(tempo) < 14){
+        if(Number(tempo.value) < 14){
             resultado = 'Apto'
             cor = '#14532d'
         }else{
@@ -23,17 +23,19 @@ const testarAptidao = () => {
         }
 
         // chama escrever mensagem
-        escreverMensagem(resultado, container, cor)
+        escreverMensagem(resultado, container, tempo.value, cor)
+        limparConteudo(tempo)
+        tempo.focus()
     }
 }
 
 // escreve uma mensagem em algum container
-const escreverMensagem = (mensagem, container, cor=null) => {
+const escreverMensagem = (mensagem, container, tempo, cor=null) => {
     // limpa o conteudo do container
     container.textContent = ''
     // cria um paragrafo
     let paragrafo = document.createElement('p')
-    paragrafo.textContent = mensagem
+    paragrafo.textContent = `Com o tempo de ${tempo} você está ${mensagem}`
 
     // caso não seja passado uma cor, ele não modifica
     if(cor != null)
@@ -44,10 +46,10 @@ const escreverMensagem = (mensagem, container, cor=null) => {
 }
 
 // verifica se um dado é valido
-const isvalid = (dado) => {
-    if(isNaN(dado) || dado.trim() == '' || dado == undefined || dado == null){
-        return false
-    }else{
-        return true
-    }
-}
+const isValid = (...d) => d.every(dado => !isNaN(dado) && dado.trim() != '' && dado != undefined && dado != null)
+
+// valida se um numero esta no limite definido
+const isLimit = (min, max, ...n) => n.every(numero => numero >= 0 && numero <= 100)
+
+// limpa o conteudo de um campo
+const limparConteudo = (...d) =>d.forEach(dado => dado.value = '')
