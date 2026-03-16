@@ -16,8 +16,8 @@ const calcularIMC = () => {
     }else{
         IMC = Number(peso.value) / (Number(altura.value) * Number(altura.value))
         status = definirStatus(IMC)
-        cor = definirCor(status)
-        escreverMensagem(nome.value, status, container, cor)
+        definirCor(status, container)
+        escreverMensagem(nome.value, status, container)
         limparConteudo(nome,altura,peso)
         nome.focus()
     }
@@ -49,33 +49,35 @@ const definirStatus = (n) => {
         
 }
 
-const definirCor = (d) => {
+const definirCor = (d, container) => {
     let status = String(d).toLowerCase()
+    container.classList.remove('status1')
+    container.classList.remove('status2')
+    container.classList.remove('status3')
+    container.classList.remove('status4')
+    container.classList.remove('status5')
+    container.classList.remove('status6')
     
     if (status == 'abaixo do peso') 
-        return '#1e3a5f'
+        container.classList.toggle('status1')
     else if (status ==  'peso normal')
-        return '#14532d'
+         container.classList.toggle('status2')
     else if (status == 'sobrepeso' ) 
-        return '#713f12'
+         container.classList.toggle('status3')
     else if (status == 'obesidade grau i') 
-        return '#7f1d1d'
+         container.classList.toggle('status4')
     else if (status == 'obesidade grau ii') 
-        return '#6b0f0f'
+         container.classList.toggle('status5')
     else if (status == 'obesidade grau iii')
-        return '#450a0a' 
+         container.classList.toggle('status6') 
 }
 
-const escreverMensagem = (nome, status, container, cor=null) => {
+const escreverMensagem = (nome, status, container) => {
     // limpa o conteudo do container
     container.textContent = ''
     // cria um paragrafo
     let paragrafo = document.createElement('p')
     let paragrafo2 = document.createElement('p')
-
-    // caso não seja passado uma cor, ele não modifica
-    if(cor != null)
-        container.style.border = `1px solid ${cor}`
 
     paragrafo.textContent = `Nome: ${nome}.`
     paragrafo2.textContent = `Classificação: ${status}`

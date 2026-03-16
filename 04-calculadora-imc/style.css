@@ -112,6 +112,30 @@ button:hover {
   justify-content: center;
 }
 
+.resultado.status1{
+  border: 2px solid #1e3a5f;
+}
+
+.resultado.status2{
+  border: 2px solid #14532d;
+}
+
+.resultado.status3{
+  border: 2px solid #713f12;
+}
+
+.resultado.status4{
+  border: 2px solid #7f1d1d;
+}
+
+.resultado.status5{
+  border: 2px solid #6b0f0f;
+}
+
+.resultado.status6{
+  border: 2px solid #450a0a;
+}
+
 footer {
   display: flex;
   align-items: flex-end;

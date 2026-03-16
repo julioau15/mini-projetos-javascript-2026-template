@@ -16,8 +16,8 @@ const calcularMedia = () => {
     }else{
         media = (Number(nota1.value) + Number(nota2.value) + Number(nota3.value)) / 3
         status = definirStatus(media)
-        cor = definirCor(status)
-        escreverMensagem(status, container, cor)
+        definirCor(status, container)
+        escreverMensagem(status, container)
         limparConteudo(nota1, nota2, nota3)
         nota1.focus()
     }
@@ -43,25 +43,25 @@ const definirStatus = (med) => {
         
 }
 
-const definirCor = (d) => {
-    let status = String(d).toLowerCase()
-    if(status == 'aprovado')
-        return '#14532d'
-    else if (status == 'recuperação')
-        return '#713f12'
-    else 
-        return '#7f1d1d'
+const definirCor = (status, container) => {
+    container.classList.remove('aprovado')
+    container.classList.remove('reprovado')
+    container.classList.remove('recuperacao')
+
+    if(status.toLowerCase() == 'aprovado')
+        container.classList.toggle('aprovado')
+    else if (status.toLowerCase() == 'reprovado')
+        container.classList.toggle('reprovado')
+    else
+        container.classList.toggle('recuperacao')
+
 }
 
-const escreverMensagem = (status, container, cor=null) => {
+const escreverMensagem = (status, container) => {
     // limpa o conteudo do container
     container.textContent = ''
     // cria um paragrafo
     let paragrafo = document.createElement('p')
-
-    // caso não seja passado uma cor, ele não modifica
-    if(cor != null)
-        container.style.border = `1px solid ${cor}`
 
     paragrafo.textContent = `Aluno(a) ${status}.`
 

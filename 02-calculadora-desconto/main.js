@@ -6,7 +6,6 @@ const calcularDesconto = () => {
     const container = document.getElementById('resultado')
     let precoFinal
     let valorEconomizado
-    let cor
 
     if(!isValid(precoOriginal.value, desconto.value) || !isLimit(0,100,desconto.value)){
         alert('ERRO! Por favor, digite um valor válido.')
@@ -14,8 +13,8 @@ const calcularDesconto = () => {
     }else{
         precoFinal =  Number(precoOriginal.value) - (Number(precoOriginal.value) * (Number(desconto.value) / 100))
         valorEconomizado = (Number(precoOriginal.value) - precoFinal).toFixed(2)
-        cor = definirCor(desconto.value)
-        escreverMensagem(desconto.value,valorEconomizado, container, cor)
+        definirCor(desconto.value, container)
+        escreverMensagem(desconto.value,valorEconomizado, container)
         limparConteudo(precoOriginal, desconto)
         precoOriginal.focus()
     }
@@ -25,19 +24,23 @@ const calcularDesconto = () => {
 const isValid = (...d) => d.every(dado => !isNaN(dado) && dado.trim() != '' && dado != undefined && dado != null)
 
 // valida se um numero esta no limite definido
-const isLimit = (min, max, ...n) => n.every(numero => numero >= 0 && numero <= 100)
+const isLimit = (min, max, ...n) => n.every(numero => numero >= min && numero <= max)
 
 // limpa o conteudo de um campo
 const limparConteudo = (...d) =>d.forEach(dado => dado.value = '')
 
-const definirCor = (n) => {
+const definirCor = (n, container) => {
     let desconto = Number(n)
+    container.classList.remove('desconto1')
+    container.classList.remove('desconto2')
+    container.classList.remove('desconto3')
+
     if(desconto <= 5)
-        return '#14532d'
+        container.classList.toggle('desconto1')
     else if (desconto <= 10)
-        return '#713f12'
+        container.classList.toggle('desconto2')
     else 
-        return '#7f1d1d'
+        container.classList.toggle('desconto3')
 }
 
 const escreverMensagem = (desconto, valorEconomizado, container, cor=null) => {
@@ -48,7 +51,7 @@ const escreverMensagem = (desconto, valorEconomizado, container, cor=null) => {
 
     // caso não seja passado uma cor, ele não modifica
     if(cor != null)
-        container.style.border = `1px solid ${cor}`
+        container.style.border = `2px solid ${cor}`
 
     paragrafo.textContent = `Com um desconto de ${desconto}% Você economizou R\$${valorEconomizado}.`
 

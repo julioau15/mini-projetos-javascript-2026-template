@@ -111,6 +111,19 @@ button:hover {
   justify-content: center;
 }
 
+.resultado.aprovado {
+  border: 1px solid #14532d;
+}
+
+.resultado.recuperacao {
+  border: 1px solid #713f12;
+}
+
+.resultado.reprovado {
+  border: 1px solid #7f1d1d;
+}
+
+
 footer {
   display: flex;
   align-items: flex-end;
