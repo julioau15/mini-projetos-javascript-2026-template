@@ -39,7 +39,7 @@ const escreverMensagem = (mensagem, container, tempo, cor=null) => {
 
     // caso não seja passado uma cor, ele não modifica
     if(cor != null)
-        paragrafo.style.color = cor
+        container.style.border = `1px solid ${cor}`
 
     // adiciona o pagragrafo no container
     container.appendChild(paragrafo)

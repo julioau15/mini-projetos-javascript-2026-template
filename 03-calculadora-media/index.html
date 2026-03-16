@@ -23,17 +23,17 @@
       <p class="descricao">Digite as três notas para calcular a situação do aluno.</p>
 
       <label>Nota 1</label>
-      <input type="number" placeholder="0 a 10" />
+      <input type="number" placeholder="0 a 10" min="0" max="10" id="input-nota1"/>
 
       <label>Nota 2</label>
-      <input type="number" placeholder="0 a 10" />
+      <input type="number" placeholder="0 a 10" min="0" max="10" id="input-nota2"/>
 
       <label>Nota 3</label>
-      <input type="number" placeholder="0 a 10" />
+      <input type="number" placeholder="0 a 10" min="0" max="10" id="input-nota3"/>
 
       <button onclick="calcularMedia()">Calcular Média</button>
 
-      <div class="resultado">
+      <div class="resultado" id="resultado">
         O resultado aparecerá aqui
       </div>
 

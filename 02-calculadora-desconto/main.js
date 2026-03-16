@@ -40,19 +40,17 @@ const definirCor = (n) => {
         return '#7f1d1d'
 }
 
-const escreverMensagem = (desconto, valorEco, container, cor=null) => {
+const escreverMensagem = (desconto, valorEconomizado, container, cor=null) => {
     // limpa o conteudo do container
     container.textContent = ''
     // cria um paragrafo
     let paragrafo = document.createElement('p')
-    let valorEconomizado = document.createElement('p')
-    valorEconomizado.innerText = `${valorEco}`
 
     // caso não seja passado uma cor, ele não modifica
     if(cor != null)
-        valorEconomizado.style.color = cor
+        container.style.border = `1px solid ${cor}`
 
-    paragrafo.textContent = `Com um desconto de ${desconto}% Você economizou R\$${valorEconomizado.value}.`
+    paragrafo.textContent = `Com um desconto de ${desconto}% Você economizou R\$${valorEconomizado}.`
 
     // adiciona o pagragrafo no container
     container.appendChild(paragrafo)
