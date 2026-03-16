@@ -1,9 +1,9 @@
 'use strict'
 
 const calcularDesconto = () => {
-    let precoOriginal = document.getElementById("input-preco-original")
-    let desconto = document.getElementById("input-desconto")
-    let container = document.getElementById('resultado')
+    const precoOriginal = document.getElementById("input-preco-original")
+    const desconto = document.getElementById("input-desconto")
+    const container = document.getElementById('resultado')
     let precoFinal
     let valorEconomizado
     let cor

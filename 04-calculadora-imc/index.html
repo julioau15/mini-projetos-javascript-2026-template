@@ -23,17 +23,17 @@
       <p class="descricao">Informe seus dados para calcular e classificar seu IMC.</p>
 
       <label>Nome</label>
-      <input type="text" placeholder="Seu nome" />
+      <input type="text" placeholder="Seu nome" id="input-nome"/>
 
       <label>Altura (em metros)</label>
-      <input type="number" placeholder="Ex: 1.70" step="0.01" />
+      <input type="number" placeholder="Ex: 1.70" step="0.01" id="input-altura" min="0" max="4"/>
 
       <label>Peso (em kg)</label>
-      <input type="number" placeholder="Ex: 70" />
+      <input type="number" placeholder="Ex: 70" id="input-peso" min="0" max="500"/>
 
       <button onclick="calcularIMC()">Calcular IMC</button>
 
-      <div class="resultado">
+      <div class="resultado" id="resultado">
         O resultado aparecerá aqui
       </div>
 

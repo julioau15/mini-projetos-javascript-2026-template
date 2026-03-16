@@ -102,9 +102,10 @@ button:hover {
 
 .resultado {
   display: flex;
+  flex-direction: column;
   min-height: 6rem;
   padding: 1.5rem;
-  text-align: center;
+  text-align: left;
   color: #d1d5db;
   border: 1px solid #374151;
   align-items: center;

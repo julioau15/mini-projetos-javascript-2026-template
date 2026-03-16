@@ -2,8 +2,8 @@
 
 // verifica se esta apto ou não
 const testarAptidao = () => {
-    let tempo = document.getElementById('input-tempo')
-    let container = document.getElementById('resultado')
+    const tempo = document.getElementById('input-tempo')
+    const container = document.getElementById('resultado')
     let resultado
     let cor
     
